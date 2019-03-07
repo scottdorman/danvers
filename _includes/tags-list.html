@@ -1,0 +1,12 @@
+{%- if include.collection.size > 0 -%}
+<ul class="list-inline text-muted small mb-1">
+    <li class="list-inline-item"><i class="fas fa-tags" aria-hidden="true"></i></li>
+    {%- if site.link-tags -%}
+    {%- for tag in include.collection -%}
+    <li class="list-inline-item"><a href="{% link tags.html %}#{{ tag | slugify }}">{{ tag }}</a></li>
+    {%- endfor -%}
+    {%- else -%}
+    <li class="list-inline-item">{{ include.collection | join: ", " }}</li>
+    {%- endif -%}
+</ul>
+{%- endif -%}

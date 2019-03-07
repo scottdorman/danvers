@@ -1,0 +1,16 @@
+---
+layout: default
+---
+
+{% include image-header.html %}
+<div class="container">
+    {% include header.html %}
+    {{ content }}
+    {% if page.comments %}
+    <div class="comments">
+        {% include disqus.html %}
+        {% include fb-comment.html %}
+        {% include staticman-comments.html %}
+    </div>
+    {% endif %}
+</div>

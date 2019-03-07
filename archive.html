@@ -1,0 +1,30 @@
+---
+layout: page
+title: Archives
+---
+
+{%- assign postsByYear = site.posts | group_by_exp:"post", "post.date | date: '%Y'" -%}
+<div>
+    <nav class="nav nav-pills">
+        {%- for year in postsByYear -%}
+        <a href="#{{ year.name | slugify }}" class="nav-link btn btn-outline btn-primary mr-1 smoothScroll">{{ year.name }}</a>
+        {%- endfor -%}
+    </nav>
+    <hr />
+
+    {%- for year in postsByYear -%}
+    <fieldset id="{{ year.name | slugify }}" class="mt-3">
+        <legend class="border-bottom">{{ year.name }}</legend>
+        <div class="list-group list-group-compressed">
+            {%- for post in year.items -%}
+            <div class="list-group-item">
+                <article class="w-100 justify-content-between">
+                    <a href="{{ post.url }}">{{post.title}}</a>
+                    <time class="d-block small text-muted" datetime="{{- post.date | date_to_xmlschema -}}">{{- post.date | date: "%B %d, %Y" -}}</time>
+                </article>
+            </div>
+            {%- endfor -%}
+        </div>
+    </fieldset>
+    {%- endfor -%}
+</div>

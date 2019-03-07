@@ -1,0 +1,16 @@
+{% unless page.banners %}
+<div class="header pb-3 {% if page.layout == 'page' %} text-center {% endif %}">
+    {% if page.title %}
+    <h5 class="card-title">{{ page.title }}</h5>
+    {% endif %}
+    {% if page.subtitle %}
+    {% if page.layout == "page" %}
+    <hr class="small" />
+    {% endif %}
+    <h6 class="card-subtitle mb-2 text-muted">{{ page.subtitle }}</h6>
+    {% endif %}
+    {% if page.date %}
+    <p class="card-text font-italic mt-0"><small class="text-muted">Posted on {{ page.date | date: "%B %-d, %Y" }}</small></p>
+    {% endif %}
+</div>
+{% endunless %}

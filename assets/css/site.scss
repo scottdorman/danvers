@@ -1,0 +1,381 @@
+---
+# this ensures Jekyll reads the file to be transformed into CSS later
+---
+;
+
+@import "_variables";
+@import "_functions";
+@import "_mixins";
+
+body {
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: $font-size-md;
+    color: $text-color;
+    position: relative;
+    background-color: $page-color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: $font-weight-bolder;
+}
+
+a {
+    color: $link-color;
+
+    &:hover {
+        text-decoration: none;
+        color: $link-highlight-color;
+    }
+}
+
+.jumbotron {
+    margin-top: 2rem;
+    margin-bottom: 0;
+}
+
+.header {
+    margin-top: $content-top-margin;
+}
+
+.post {
+    .header {
+        margin-top: $content-top-margin;
+    }
+}
+
+h5.card-title {
+    font-size: $post-title-size;
+    font-weight: $font-weight-bolder;
+}
+
+h6.card-subtitle {
+    font-size: $post-subtitle-size;
+    font-weight: $font-weight-light;
+}
+
+.card-body {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.image-header {
+    .carousel {
+        margin-top: $content-top-margin / 2;
+
+        .carousel-caption {
+            text-align: right;
+            font-size: $font-size-sm;
+            padding: $carousel-caption-padding $carousel-caption-padding * 2;
+            font-style: italic;
+            background: $carousel-caption-bg;
+            color: $gray-500;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+
+    .card-img-overlay {
+        bottom: initial;
+        z-index: z(overlay);
+    }
+
+    img {
+        height: $image-header-image-height;
+        width: $image-header-image-width;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .image-header {
+        .carousel {
+            margin-top: $content-top-margin / 3;
+        }
+    }
+}
+
+blockquote {
+    color: $gray-600;
+    font-style: italic;
+    border-left: $border-width * 6.5 solid $gray-400;
+    padding-left: $box-padding;
+
+    p:first-child {
+        margin-top: 0;
+    }
+}
+
+hr.small {
+    max-width: 100px;
+    margin: 15px auto;
+    border-width: 4px;
+    border-color: inherit;
+    border-radius: 3px;
+}
+
+.navbar-theme {
+    background-color: $navbar-bg-color;
+    border-bottom: $border-width solid #EAEAEA;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+    .navbar-brand {
+        font-weight: $font-weight-bolder;
+        color: $navbar-text-color;
+
+        &:focus, &:hover {
+            color: $link-highlight-color;
+        }
+
+        img {
+            width: $navbar-brand-image-size;
+            height: $navbar-brand-image-size;
+        }
+    }
+
+    .navbar-nav {
+        .nav-link {
+            text-transform: uppercase;
+            font-size: $font-size-sm;
+            letter-spacing: 1px;
+            font-weight: $font-weight-bolder;
+            color: $navbar-text-color;
+
+            &:focus, &:hover {
+                color: $link-highlight-color;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .navbar-theme {
+        padding-top: $navbar-padding;
+        padding-bottom: $navbar-padding;
+        -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        transition: background .5s ease-in-out,padding .5s ease-in-out;
+    }
+
+    .navbar-theme.short {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+}
+
+.card-img-overlay.avatar {
+    z-index: z(back);
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    width: $card-img-overlay-width;
+
+    img {
+        margin-top: $avatar-margin-top;
+        width: $avatar-img-width;
+    }
+
+    &-hidden {
+        opacity: 0;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .card-img-overlay.avatar {
+        width: ceil($card-img-overlay-width + ($card-img-overlay-width * 0.33));
+        margin-left: -8rem !important;
+
+        img {
+            margin-top: $avatar-margin-top / 2;
+            width: $avatar-img-width * 2;
+        }
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .card-img-overlay {
+        margin-left: 2rem !important;
+    }
+}
+
+footer {
+    background-color: $footer-bg-color;
+    color: $footer-text-color;
+    font-size: $font-size-sm;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+    .list-inline {
+        font-size: $h4-font-size;
+    }
+
+    a {
+        color: $footer-link-color;
+        font-weight: $font-weight-bold;
+    }
+}
+
+.list-group-item {
+    border: none;
+    border-bottom: ($border-width * 2) solid $gray-200;
+    padding-left: 0;
+    padding-right: 0;
+
+    &:last-child {
+        border-bottom-width: $border-width;
+    }
+}
+
+.list-group-compressed {
+    .list-group-item {
+        border: none;
+        padding-top: $list-group-compressed-padding !important;
+        padding-bottom: $list-group-compressed-padding / 2 !important;
+    }
+}
+
+.comments {
+    margin-top: 2rem;
+}
+
+@media only screen and (min-width: 768px) {
+    .comments {
+        margin-top: 2.5rem;
+    }
+}
+
+::-moz-selection {
+    color: $white;
+    text-shadow: none;
+    background-color: $link-highlight-color;
+}
+
+::selection {
+    color: $white;
+    text-shadow: none;
+    background-color: $link-highlight-color;
+}
+
+img::selection {
+    color: $white;
+    background: transparent;
+}
+
+img::-moz-selection {
+    color: $white;
+    background: transparent;
+}
+
+%box {
+    padding: $box-padding;
+    padding-bottom: $box-padding - 5;
+    margin: $box-margin;
+    margin-left: $box-margin / 4;
+    border: $border-width solid $border-color;
+    border-left-width: $border-width * 6.5;
+    border-radius: $border-radius;
+}
+
+@each $color, $value in $theme-colors {
+    .box-#{$color} {
+        @extend %box;
+        @include box-variant($color);
+    }
+}
+
+.gist, .gist-file table tr {
+    border: unset;
+
+    td {
+        border: unset;
+    }
+}
+
+table {
+    padding: 0;
+
+    tr {
+        border-top: $border-width solid $border-color;
+        background-color: $white;
+        margin: 0;
+        padding: 0;
+
+        &:nth-child(2n) {
+            background-color: $gray-200;
+        }
+
+        & th {
+            font-weight: $font-weight-bold;
+            border: $border-width solid $border-color;
+            text-align: left;
+            margin: 0;
+            padding: $table-padding / 2 $table-padding;
+
+            :first-child {
+                margin-top: 0;
+            }
+
+            :last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        td {
+            border: $border-width solid $border-color;
+            text-align: left;
+            margin: 0;
+            padding: $table-padding / 2 $table-padding;
+
+            :first-child {
+                margin-top: 0;
+            }
+
+            :last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+pre {
+    padding: $code-padding;
+    margin-bottom: $code-margin;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: $gray-100;
+    border: $border-width solid $gray-400;
+    border-radius: $border-radius;
+
+    &.highlight, .highlight > &, td.code & {
+        background-color: $gray-100;
+        border-left: $border-width * 6.5 solid $gray-900;
+    }
+}
+
+code table {
+
+    &, & td, & th, & tbody, & tr, td.gutter pre {
+        padding: 0;
+        border: none;
+        background-color: $white;
+    }
+}
+
+.highlight {
+    > pre {
+        padding: 0;
+
+        &.highlight {
+            padding: $table-padding;
+        }
+    }
+}
+
+td {
+    &.code pre {
+        border: 0 solid $gray-900;
+        border-left-width: $border-width * 0.9;
+        border-radius: 0;
+    }
+
+    &.gutter {
+        padding-top: $border-width * 0.9;
+    }
+}

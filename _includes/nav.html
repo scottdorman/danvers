@@ -1,0 +1,44 @@
+<header id="main-nav" class="navbar fixed-top navbar-expand-md navbar-light navbar-theme">
+    <a class="navbar-brand" href="{{ site.url }}">
+        {%- if site.brand-logo -%}
+        <img src="{{ site.brand-logo }}" class="d-inline-block align-top mr-1" />
+        {%- endif -%}
+        {{ site.title }}
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapseContent">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbarCollapseContent" class="navbar-collapse collapse ">
+        <div class="navbar-nav ml-auto">
+            {%- comment -%}This is a workaround until GitHub upgrades to Jekyll 4.
+            This really should be
+            where_exp:"node", "node.title != null and node.layout == 'page' and node.nav-include != false"
+            {%- endcomment -%}
+            {%- assign pages_list = site.pages | where_exp:"node", "node.layout == 'page'" -%}
+            {%- assign pages_list = pages_list | where_exp:"node", "node.nav-include != false" -%}
+            {%- assign pages_list = pages_list | where_exp:"node", "node.title != null" -%}
+            {%- for node in pages_list -%}
+            {%- if page.url == node.url -%}
+            {%- assign active_node = true -%}
+            {%- else -%}
+            {%- assign active_node = false -%}
+            {%- endif -%}
+            <a class="nav-item nav-link {% if active_node %} active{% endif %}" href="{{ node.url }}">{{ node.title }}{% if active_node %} <span class="sr-only">(current)</span>{% endif %}</a>
+            {%- endfor -%}
+        </div>
+    </div>
+
+    {% if layout.show-avatar or page.show-avatar %}
+    {%- if site.gravatar -%}
+    {%- capture image-source -%}https://www.gravatar.com/avatar/{{ site.gravatar.hash }}?s={{ site.gravatar.size }}{%- endcapture -%}
+    {%- else -%}
+    {%- capture image-source -%}{{ site.avatar | prepend: site.url }}{%- endcapture -%}
+    {%- endif -%}
+    <div class="card-img-overlay avatar text-center pt-2 mr-md-5 w-100">
+        <a href="{{ site.url }}">
+            <img class="rounded-circle border border-dark" src="{{ image-source }}" />
+        </a>
+    </div>
+    {%- endif -%}
+</header>

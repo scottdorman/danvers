@@ -1,0 +1,126 @@
+# --- Base configuration --- #
+
+url: "https://username.github.io"
+baseurl: "/"
+
+# --- General configuration --- #
+title: My website
+description: A virtual proof that name is awesome!
+excerpt_length: 50
+title-separator: "-"
+link-tags: true
+url-pretty: "MyWebsite.com"
+
+avatar: "/assets/img/avatar-icon.png"
+#brand-logo: "/assets/img/avatar-icon.png"
+
+#gravatar:
+#   hash: e74e26bfd345fdd80bedf436178c5829 # Replace this with your own gravatar hash
+#   size: 80
+
+author:
+  name: Some Person
+
+# Select your active Social Network Links.
+# Uncomment the links you want to show in the footer and add your information to each link.
+# You can reorder the items to define the link order.
+# If you want to add a new link that isn't here, you'll need to also edit the file _data/SocialNetworks.yml
+social-network-links:
+  rss: true
+  email: "someone@example.com"
+  github: scottdorman
+  twitter: sdorman
+#  reddit: yourname
+#  linkedin: scottdorman
+#  xing: yourname
+#  stackoverflow: "1559"
+#  snapchat: yourname
+#  instagram: yourname
+#  youtube: user/yourname
+#  spotify: yourname
+#  telephone: +14159998888
+#  steam: yourname
+#  twitch: yourname
+#  yelp: yourname
+
+# Select which share links to show in posts
+active-share-links:
+  twitter: true
+  facebook: true
+  linkedin: true
+
+# --- Web Statistics Section --- #
+#google_analytics:
+#   gtag: ""
+#   id: ""
+#   gtm: ""
+
+#matomo:
+#  site_id: "9"
+#  uri: "demo.wiki.pro"
+#  opt-out: true
+
+# --- Comments --- #
+
+# Fill in your Disqus shortname (NOT the userid) if you want to support Disqus comments
+# disqus: ""
+
+# To use Facebook Comments, fill in a Facebook App ID
+# fb_comment_id: ""
+
+# To use Utterances (https://utteranc.es/), fill in your repository name. 
+#utterances:
+#    repository:
+#    issueterm: pathname
+#    crossorigin: anonymous
+
+# Output options (more information on Jekyll's site)
+timezone: America/New_York
+markdown: kramdown
+highlighter: rouge
+permalink: /:year/:month/:day/:title/
+paginate: 5
+
+kramdown:
+  input: GFM
+
+# Default YAML values (more information on Jekyll's site)
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true  # add comments to all blog posts
+      social-share: true # add social media sharing buttons to all blog posts
+  -
+    scope:
+      path: "" # all files
+    values:
+      layout: "default"
+      show-avatar: true
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      nav-include: true  # include in header nav
+
+# Exclude these files from production site
+exclude:
+  - CHANGELOG.md
+  - CNAME
+  - Dockerfile
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - Vagrantfile
+
+plugins:
+  - jekyll-feed
+  - jekyll-mentions
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-seo-tag

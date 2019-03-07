@@ -1,0 +1,43 @@
+{%- if page.banners -%}
+<div class="image-header">
+    <div class="card-img-overlay header text-white text-center">
+        <div class="container">
+            <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+                {%- if page.title -%}
+                <h5 class="card-title">{{ page.title }}</h5>
+                {%- endif -%}
+                {%- if page.subtitle -%}
+                {%- if page.layout == 'page' -%}
+                <hr class="small" />
+                {%- endif -%}
+                <h6 class="card-subtitle mb-2 text-white">{{ page.subtitle }}</h6>
+                {%- endif -%}
+                {%- if page.date -%}
+                <p class="card-text font-italic mt-0"><small class="text-white">Posted on {{ page.date | date: "%B %-d, %Y" }}</small></p>
+                {%- endif -%}
+                <div class="container">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="header-images" class="carousel slide carousel-fade" data-ride="carousel" data-interval="8000" data-keyboard="false">
+        <div class="carousel-inner">
+            {%- for item in page.banners -%}
+            <div class="carousel-item {% if forloop.index == 1 %}active{% endif %}">
+                {%- if item.src -%}
+                {%- assign caption = item.caption -%}
+                <img src="{{ item.src | prepend: site.url }}" class="d-block w-100" alt="{{ caption }}">
+                {%- if caption -%}
+                <div class="carousel-caption caption">
+                    {{ caption }}
+                </div>
+                {%- endif -%}
+                {%- else -%}
+                <img src="{{ item | prepend: site.url }}" class="d-block w-100">
+                {%- endif -%}
+            </div>
+            {%- endfor -%}
+        </div>
+    </div>
+</div>
+{% endif %}

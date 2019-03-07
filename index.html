@@ -1,0 +1,60 @@
+---
+layout: page
+title: My website
+subtitle: This is where I will tell my friends way too much about me
+nav-include: false
+---
+
+<div class="jumbotron">
+    <h1>TEST</h1>
+    <p>foo</p>
+</div>
+<div class="list-group">
+    {%- for post in paginator.posts -%}
+    <div class="list-group-item">
+        <article>
+            <div class="card mb-3 border-0">
+                {%- if post.image -%}
+                <a class="card-img-top" href="{{ post.url }}">
+                    <img src="{{ post.image }}">
+                </a>
+                {%- endif -%}
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="{{ post.url }}">{{ post.title }}</a>
+                    </h5>
+                    {%- if post.subtitle -%}
+                    <h6 class="card-subtitle mb-2 text-muted">{{ post.subtitle }}</h6>
+                    {%- endif -%}
+                    <p class="card-text font-italic mt-0"><small class="text-muted emphasis">Posted on {{ post.date | date: "%B %-d, %Y" }}</small></p>
+                    <p class="card-text">
+                        {{ post.excerpt | strip_html | xml_escape | truncatewords: site.excerpt_length }}
+                        {%- assign excerpt_word_count = post.excerpt | number_of_words -%}
+                        {%- if post.content != post.excerpt or excerpt_word_count > site.excerpt_length -%}
+                        <a href="{{ post.url }}" class="btn btn-outline-secondary btn-sm ml-1">Read more</a>
+                        {%- endif -%}
+                    </p>
+                    {% include tags-list.html collection=post.tags %}
+                </div>
+            </div>
+        </article>
+    </div>
+    {%- endfor -%}
+</div>
+
+{%- if paginator.total_pages > 1 -%}
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-between mt-3">
+        {%- if paginator.previous_page -%}
+        <li class="page-item"><a class="page-link" href="{{ paginator.previous_page_path | replace: '//', '/'  }}"><i class="fas fa-angle-double-left"></i> Newer posts</a></li>
+        {%- else -%}
+        <li class="page-item disabled"><span class="page-link"><i class="fas fa-angle-double-left"></i> Newer posts</span></li>
+        {%- endif -%}
+        {%- if paginator.next_page -%}
+        <li class="page-item"><a class="page-link" href="{{ paginator.next_page_path | replace: '//', '/'  }}"><i class="fas fa-angle-double-right"></i> Older posts</a></li>
+        {%- else -%}
+        <li class="page-item disabled"><span class="page-link"><i class="fas fa-angle-double-right"></i> Older posts</span></li>
+        {%- endif -%}
+    </ul>
+</nav>
+{%- endif -%}

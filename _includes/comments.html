@@ -1,0 +1,7 @@
+{% if page.comments %}
+<div class="comments">
+    {% include comments-disqus.html %}
+    {% include comments-facebook.html %}
+    {% include comments-utterances.html %}
+</div>
+{% endif %}

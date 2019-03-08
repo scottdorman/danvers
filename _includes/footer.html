@@ -6,7 +6,7 @@
         {%- assign element = site.data.SocialNetworks[currentKey] -%}
         {%- case currentKey -%}
         {%- when 'rss' -%}
-        {%- assign href = '/feed.xml' | prepend: site.url -%}
+        {%- assign href = 'feed.xml' | relative_url -%}
         {%- when 'yelp' -%}
         {%- assign href = element.baseURL | replace: "{site.id}", value -%}
         {%- else -%}
@@ -29,7 +29,7 @@
         {{ site.time | date: '%Y' }}
         {%- if site.url-pretty -%}
         &nbsp;&bull;&nbsp;
-        <a href="{{ site.url }}">{{ site.url-pretty }}</a>
+        <a href="{{ "/" | relative_url }}">{{ site.url-pretty }}</a>
         {%- endif -%}
 
         {%- if site.matomo -%}

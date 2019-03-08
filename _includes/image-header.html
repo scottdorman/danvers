@@ -26,14 +26,14 @@
             <div class="carousel-item {% if forloop.index == 1 %}active{% endif %}">
                 {%- if item.src -%}
                 {%- assign caption = item.caption -%}
-                <img src="{{ item.src | prepend: site.url }}" class="d-block w-100" alt="{{ caption }}">
+                <img src="{{ item.src | relative_url }}" class="d-block w-100" alt="{{ caption }}">
                 {%- if caption -%}
                 <div class="carousel-caption caption">
                     {{ caption }}
                 </div>
                 {%- endif -%}
                 {%- else -%}
-                <img src="{{ item | prepend: site.url }}" class="d-block w-100">
+                <img src="{{ item | relative_url }}" class="d-block w-100">
                 {%- endif -%}
             </div>
             {%- endfor -%}

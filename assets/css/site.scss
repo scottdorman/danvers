@@ -53,6 +53,17 @@ h6.card-subtitle {
     font-weight: $font-weight-light;
 }
 
+.card-title, .card-subtitle {
+    a {
+        color: $text-color;
+
+        &:hover {
+            text-decoration: none;
+            color: $link-highlight-color;
+        }
+    }
+}
+
 .card-body {
     padding-left: 0;
     padding-right: 0;
@@ -120,7 +131,7 @@ hr.small {
 
     .navbar-brand {
         font-weight: $font-weight-bolder;
-        color: $navbar-text-color;
+        color: $navbar-link-color;
 
         &:focus, &:hover {
             color: $link-highlight-color;
@@ -138,7 +149,7 @@ hr.small {
             font-size: $font-size-sm;
             letter-spacing: 1px;
             font-weight: $font-weight-bolder;
-            color: $navbar-text-color;
+            color: $navbar-link-color;
 
             &:focus, &:hover {
                 color: $link-highlight-color;

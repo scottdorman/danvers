@@ -1,5 +1,5 @@
 <header id="main-nav" class="navbar fixed-top navbar-expand-md navbar-light navbar-theme">
-    <a class="navbar-brand" href="{{ site.url }}">
+    <a class="navbar-brand" href="{{ "/" | relative_url }}">
         {%- if site.brand-logo -%}
         <img src="{{ site.brand-logo }}" class="d-inline-block align-top mr-1" />
         {%- endif -%}
@@ -24,7 +24,7 @@
             {%- else -%}
             {%- assign active_node = false -%}
             {%- endif -%}
-            <a class="nav-item nav-link {% if active_node %} active{% endif %}" href="{{ node.url }}">{{ node.title }}{% if active_node %} <span class="sr-only">(current)</span>{% endif %}</a>
+            <a class="nav-item nav-link {% if active_node %} active{% endif %}" href="{{ node.url | relative_url }}">{{ node.title }}{% if active_node %} <span class="sr-only">(current)</span>{% endif %}</a>
             {%- endfor -%}
         </div>
     </div>
@@ -32,12 +32,14 @@
     {% if layout.show-avatar or page.show-avatar %}
     {%- if site.gravatar -%}
     {%- capture image-source -%}https://www.gravatar.com/avatar/{{ site.gravatar.hash }}?s={{ site.gravatar.size }}{%- endcapture -%}
+    {%- elsif page.image -%}
+    {%- capture image-source -%}{{ page.image }}{%- endcapture -%}
     {%- else -%}
-    {%- capture image-source -%}{{ site.avatar | prepend: site.url }}{%- endcapture -%}
+    {%- capture image-source -%}{{ site.avatar }}{%- endcapture -%}
     {%- endif -%}
     <div class="card-img-overlay avatar text-center pt-2 mr-md-5 w-100">
-        <a href="{{ site.url }}">
-            <img class="rounded-circle border border-dark" src="{{ image-source }}" />
+        <a href="{{ "/" | relative_url }}">
+            <img class="rounded-circle border border-dark" src="{{ image-source | relative_url }}" />
         </a>
     </div>
     {%- endif -%}

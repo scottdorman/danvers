@@ -1,7 +1,7 @@
 # --- Base configuration --- #
 
-url: "https://username.github.io"
-baseurl: "/"
+url: "https://yourname.github.io"
+baseurl: "" # For project pages, this should be the project name; otherwise, leave it blank.
 
 # --- General configuration --- #
 title: My website
@@ -68,7 +68,7 @@ active-share-links:
 # To use Facebook Comments, fill in a Facebook App ID
 # fb_comment_id: ""
 
-# To use Utterances (https://utteranc.es/), fill in your repository name. 
+# To use Utterances (https://utteranc.es/), fill in your repository name.
 #utterances:
 #    repository:
 #    issueterm: pathname

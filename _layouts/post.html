@@ -18,12 +18,12 @@ layout: default
                 <nav aria-label="Page navigation">
                     <ul class="pagination justify-content-between mt-3 pt-3 border-top">
                         {% if page.previous.url %}
-                        <li class="page-item"><a class="page-link" href="{{ page.previous.url | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}"><i class="fas fa-angle-double-left"></i> Previous post</a></li>
+                        <li class="page-item"><a class="page-link" href="{{ page.previous.url | relative_url }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}"><i class="fas fa-angle-double-left"></i> Previous post</a></li>
                         {% else %}
                         <li class="page-item disabled"><span class="page-link"><i class="fas fa-angle-double-left"></i> Previous post</span></li>
                         {% endif %}
                         {% if page.next.url %}
-                        <li class="page-item"><a class="page-link" href="{{ page.next.url | replace: '//', '/' }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}"><i class="fas fa-angle-double-right"></i> Next post</a></li>
+                        <li class="page-item"><a class="page-link" href="{{ page.next.url | relative_url }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}"><i class="fas fa-angle-double-right"></i> Next post</a></li>
                         {% else %}
                         <li class="page-item disabled"><span class="page-link"><i class="fas fa-angle-double-right"></i> Next post</span></li>
                         {% endif %}

@@ -45,17 +45,18 @@ $theme-colors: map-merge( ( "primary": $primary, "secondary": $secondary, "succe
 // Set a specific jump point for requesting color jumps
 $theme-color-interval: 8% !default;
 
-$text-color: #404040 !default;
-$link-color: $text-color !default;
-$link-highlight-color: #0085a1;
-$navbar-bg-color: #f5f5f5 !default;
-$navbar-text-color: $text-color !default;
+$text-color: $gray-900 !default;
+$link-color: darken($primary, 15%) !default;
+$link-highlight-color: darken($cyan, 5%);
+$navbar-bg-color: $light !default;
+$navbar-text-color: $gray-600 !default;
+$navbar-link-color: darken($navbar-text-color, 30%) !default;
 $navbar-brand-image-size: 2rem !default;
 $navbar-children-col: $navbar-bg-color !default;
 $page-color: $white !default;
 $footer-bg-color: $navbar-bg-color !default;
-$footer-text-color: #777777 !default;
-$footer-link-color: $link-color !default;
+$footer-text-color: $gray-600 !default;
+$footer-link-color: darken($footer-text-color, 30%) !default;
 
 $font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
 $font-size-lg: ($font-size-base * 1.25) !default;

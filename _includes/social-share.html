@@ -1,28 +1,27 @@
-{% if page.social-share %}
-{% if site.active-share-links | where:"", true | size %}
+{%- if page.social-share -%}
+{%- if site.active-share-links | where:"", true | size -%}
 <section id="social-share-section" class="mt-3">
     <span class="sr-only">Share: </span>
-    {% for link in site.active-share-links %}
+    {%- for link in site.active-share-links -%}
     {%- assign value = link[1] -%}
-    {% if value == true %}
-    {% assign currentKey = link[0] %}
-    {% assign element = site.data.SocialNetworks[currentKey] %}
-    {% assign shareButtonKey = element.shareButtonKey | default: currentKey %}
-
-    {% case currentKey %}
-    {% when 'twitter' %}
-    {% capture href %}{{ page.title | url_encode }}+{{ site.url }}{{ page.url }}{% endcapture %}
-    {% else %}
-    {% capture href %}{{ site.url }}{{ page.url }}{% endcapture %}
-    {% endcase %}
-
+    {%- if value == true -%}
+    {%- assign currentKey = link[0] -%}
+    {%- assign element = site.data.SocialNetworks[currentKey] -%}
+    {%- assign shareButtonKey = element.shareButtonKey | default: currentKey -%}
+    {%- capture page_url -%}{{ site.url }}{{ page.url | relative_url }}{%- endcapture -%}
+    {%- case currentKey -%}
+    {%- when 'twitter' -%}
+    {%- capture href -%}{{ page.title | url_encode }}+{{ site.url }}{{ page.url | relative_url }}{%- endcapture -%}
+    {%- else -%}
+    {%- capture href -%}{{ site.url }}{{ page.url | relative_url }}{%- endcapture -%}
+    {%- endcase -%}
     <a href="{{ element.shareURL | append: href }}"
-       class="btn btn-social-icon btn-{{ shareButtonKey }}" title="{{'Share on ' | append: element.name }}">
+       class="btn btn-social-icon btn-{{ shareButtonKey }} mr-2" title="{{'Share on ' | append: element.name }}">
         <i class="{{ element.icon }}" aria-hidden="true"></i>
         <span class="sr-only">{{ element.name }}</span>
     </a>
-    {% endif %}
-    {% endfor %}
+    {%- endif -%}
+    {%- endfor -%}
 </section>
-{% endif %}
-{% endif %}
+{%- endif -%}
+{%- endif -%}
